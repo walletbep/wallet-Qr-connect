@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <title>WalletConnect v2 dApp</title>
 
-  <!-- Load WalletConnect Local Loader -->
-  <script src="walletconnect-loader.js"></script>
+  <!-- Load WalletConnect v2 UMD Direct -->
+  <script src="https://cdn.jsdelivr.net/npm/@walletconnect/sign-client@2.10.1/dist/umd/sign-client.js"></script>
+  <script>
+    window.WalletConnectSignClient = window.SignClient;
+  </script>
 
-  <!-- Ethers.js -->
+  <!-- Ethers JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.8.1/ethers.umd.min.js"></script>
 
   <style>
