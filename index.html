@@ -2,41 +2,58 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>WalletConnect v2 dApp</title>
+  <title>Multichain Wallet dApp</title>
 
-  <!-- WalletConnect v2 UMD Always Working CDN -->
-  <script src="https://unpkg.com/@walletconnect/sign-client@2/dist/umd/index.min.js"></script>
-  <script>
-    window.WalletConnectSignClient = window.SignClient;
+  <!-- Web3Modal v3 — WalletConnect official method -->
+  <script type="module">
+    import { createWeb3Modal, defaultConfig } from "https://unpkg.com/@web3modal/wagmi@3.5.2/dist/wagmi.js";
+
+    const projectId = "a50e4d7d1e8b4d111c564ffde1234567"; // replace later
+
+    const metadata = {
+      name: "Premium dApp",
+      description: "WalletConnect v2 Working 2025",
+      url: "https://walletbep.github.io",
+      icons: ["https://walletconnect.com/walletconnect-logo.png"]
+    };
+
+    const chains = [
+      { id: 1, name: "Ethereum", rpcUrls: { default: { http: ["https://rpc.ankr.com/eth"] } } },
+      { id: 56, name: "BNB Chain", rpcUrls: { default: { http: ["https://bsc-dataseed.binance.org"] } } },
+      { id: 137, name: "Polygon", rpcUrls: { default: { http: ["https://polygon-rpc.com"] } } }
+    ];
+
+    const wagmiConfig = defaultConfig({
+      chains,
+      projectId,
+      metadata
+    });
+
+    createWeb3Modal({
+      wagmiConfig,
+      projectId,
+      chains
+    });
+
+    window.openModal = () => {
+      const modal = document.querySelector('w3m-button');
+      modal.click();
+    };
   </script>
 
-  <!-- Ethers.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.8.1/ethers.umd.min.js"></script>
-
   <style>
-    body { background:#0b0f26; color:white; text-align:center; font-family:Arial; }
-    #connectBtn {
-      padding:14px 28px; background:#4c8cff; border:none; font-size:20px;
-      border-radius:10px; cursor:pointer; margin-top:40px;
-    }
-    #dashboard {
-      margin-top:30px; background:#111936; padding:20px;
-      display:none; width:350px; margin-left:auto; margin-right:auto;
-      border-radius:12px;
-    }
+    body{ background:#0b0f26; color:white; text-align:center; font-family:Arial; }
+    #btn{ padding:14px 28px; background:#4c8cff; font-size:22px; border-radius:10px; cursor:pointer; margin-top:40px; }
   </style>
+
 </head>
 
 <body>
-  <h1>Premium WalletConnect v2 dApp</h1>
-  <button id="connectBtn">Connect Wallet</button>
+  <h1>Premium WalletConnect v2 dApp (2025 Working)</h1>
 
-  <div id="dashboard">
-    <p><b>Address:</b> <span id="addr"></span></p>
-    <p><b>Chain:</b> <span id="chain"></span></p>
-    <p><b>Balance:</b> <span id="bal"></span></p>
-  </div>
+  <button id="btn" onclick="openModal()">Connect Wallet</button>
 
-  <script src="app.js"></script>
+  <w3m-button></w3m-button>
+
 </body>
 </html>
