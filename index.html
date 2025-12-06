@@ -2,31 +2,36 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Premium Multichain Wallet dApp</title>
+  <title>WalletConnect v2 dApp</title>
+
+  <!-- Load WalletConnect Local Loader -->
+  <script src="walletconnect-loader.js"></script>
+
+  <!-- Ethers.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.8.1/ethers.umd.min.js"></script>
 
   <style>
-    body { background:#0b0f26; text-align:center; color:white; font-family:Arial; }
+    body { background:#0b0f26; color:white; text-align:center; font-family:Arial; }
     #connectBtn {
-      margin-top:40px; padding:15px 30px; font-size:20px;
-      background:#4c8cff; border:none; border-radius:12px;
-      cursor:pointer; box-shadow:0 0 12px #4c8cff;
+      padding:14px 28px; background:#4c8cff; border:none; font-size:20px;
+      border-radius:10px; cursor:pointer; margin-top:40px;
     }
-    #info { margin-top:30px; background:#111936; padding:20px; border-radius:12px; width:350px; margin-left:auto; margin-right:auto; display:none; }
+    #dashboard {
+      margin-top:30px; background:#111936; padding:20px;
+      display:none; width:350px; margin-left:auto; margin-right:auto;
+      border-radius:12px;
+    }
   </style>
-
-  <!-- Web3Modal + WalletConnect official libraries -->
-  <script src="https://unpkg.com/@web3modal/wagmi@3/dist/wagmi.js"></script>
-  <script src="https://unpkg.com/viem/dist/viem.js"></script>
-  <script src="https://unpkg.com/@web3modal/wallet@3/dist/wallet.js"></script>
 </head>
 
 <body>
-  <h1>Premium Multichain Wallet dApp</h1>
+  <h1>Premium WalletConnect v2 dApp</h1>
   <button id="connectBtn">Connect Wallet</button>
 
-  <div id="info">
-    <p><strong>Address:</strong> <span id="addr"></span></p>
-    <p><strong>Chain:</strong> <span id="chain"></span></p>
+  <div id="dashboard">
+    <p><b>Address:</b> <span id="addr"></span></p>
+    <p><b>Chain:</b> <span id="chain"></span></p>
+    <p><b>Balance:</b> <span id="bal"></span></p>
   </div>
 
   <script src="app.js"></script>
